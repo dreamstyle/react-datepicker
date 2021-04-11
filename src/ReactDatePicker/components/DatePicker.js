@@ -13,9 +13,9 @@ const DatePicker = (props) => {
       case 'date':
         return <SelectDate />
       case 'month':
-        return <SelectMonth />
+        return <SelectMonth setMode={setMode} />
       case 'year':
-        return <SelectYear />
+        return <SelectYear setMode={setMode} />
       default:
         break
     }
