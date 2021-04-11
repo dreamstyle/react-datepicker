@@ -1,4 +1,11 @@
-import { sub, getDay, startOfMonth, getDaysInMonth } from 'date-fns'
+import {
+  set,
+  sub,
+  getDay,
+  getMonth,
+  startOfMonth,
+  getDaysInMonth,
+} from 'date-fns'
 
 const SelectDate = ({ now, setNow }) => {
   const currentMonth = []
@@ -24,6 +31,11 @@ const SelectDate = ({ now, setNow }) => {
     nextMonth.push(i)
   }
 
+  const handleClick = (values) => {
+    const newNow = set(now, values)
+    setNow(newNow)
+  }
+
   return (
     <section>
       <p>
@@ -32,15 +44,29 @@ const SelectDate = ({ now, setNow }) => {
       </p>
 
       {lastMonth.map((date) => (
-        <button key={date}>{date}</button>
+        <button
+          key={date}
+          onClick={() => handleClick({ month: getMonth(now) - 1, date })}
+        >
+          {date}
+        </button>
       ))}
       {currentMonth.map((date) => (
-        <button key={date} style={{ color: 'blue' }}>
+        <button
+          key={date}
+          style={{ color: 'blue' }}
+          onClick={() => handleClick({ date })}
+        >
           {date}
         </button>
       ))}
       {nextMonth.map((date) => (
-        <button key={date}>{date}</button>
+        <button
+          key={date}
+          onClick={() => handleClick({ month: getMonth(now) + 1, date })}
+        >
+          {date}
+        </button>
       ))}
     </section>
   )
