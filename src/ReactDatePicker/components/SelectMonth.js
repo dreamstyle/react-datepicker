@@ -1,4 +1,5 @@
-import { setMonth } from 'date-fns'
+import { getMonth, setMonth } from 'date-fns'
+import Section from './SelectCommonStyle'
 
 const SelectMonth = ({ selected, setSelected, setMode }) => {
   const months = [
@@ -21,14 +22,23 @@ const SelectMonth = ({ selected, setSelected, setMode }) => {
     setSelected(setMonth(selected, month))
   }
 
+  const isActive = (month) => {
+    return getMonth(selected) === month && 'btn-active'
+  }
+
   return (
-    <section>
+    <Section>
       {months.map((month, i) => (
-        <button key={month} onClick={() => handleClick(i)}>
-          {month}
-        </button>
+        <div className="cell" key={month}>
+          <button
+            className={`btn btn-primary ${isActive(i)}`}
+            onClick={() => handleClick(i)}
+          >
+            {month}
+          </button>
+        </div>
       ))}
-    </section>
+    </Section>
   )
 }
 
