@@ -1,12 +1,17 @@
+import Section from './DaysStyle'
+
 const Days = () => {
   const days = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
 
   return (
-    <section>
+    <Section>
       {days.map((day) => (
-        <span key={day}>{day} </span>
+        <span key={day} className="day">
+          {day}
+        </span>
       ))}
-    </section>
+    </Section>
   )
 }
+
 export default Days
