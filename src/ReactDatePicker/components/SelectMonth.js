@@ -1,4 +1,6 @@
-const SelectMonth = ({ setMode }) => {
+import { setMonth } from 'date-fns'
+
+const SelectMonth = ({ now, setNow, setMode }) => {
   const months = [
     'Jan',
     'Feb',
@@ -16,12 +18,13 @@ const SelectMonth = ({ setMode }) => {
 
   const handleClick = (month) => {
     setMode('date')
+    setNow(setMonth(now, month))
   }
 
   return (
     <section>
-      {months.map((month) => (
-        <button key={month} onClick={() => handleClick()}>
+      {months.map((month, i) => (
+        <button key={month} onClick={() => handleClick(i)}>
           {month}
         </button>
       ))}

@@ -6,6 +6,7 @@ import SelectMonth from './SelectMonth'
 import SelectYear from './SelectYear'
 
 const DatePicker = (props) => {
+  const [now, setNow] = useState(Date.now())
   const [mode, setMode] = useState('date')
 
   const renderView = (mode) => {
@@ -13,9 +14,9 @@ const DatePicker = (props) => {
       case 'date':
         return <SelectDate />
       case 'month':
-        return <SelectMonth setMode={setMode} />
+        return <SelectMonth now={now} setNow={setNow} setMode={setMode} />
       case 'year':
-        return <SelectYear setMode={setMode} />
+        return <SelectYear now={now} setNow={setNow} setMode={setMode} />
       default:
         break
     }
@@ -23,7 +24,7 @@ const DatePicker = (props) => {
 
   return (
     <section>
-      <Header mode={mode} setMode={setMode} />
+      <Header now={now} setNow={setNow} mode={mode} setMode={setMode} />
       <Days />
       {renderView(mode)}
     </section>
