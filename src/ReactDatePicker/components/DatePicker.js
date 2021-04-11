@@ -12,7 +12,7 @@ const DatePicker = (props) => {
   const renderView = (mode) => {
     switch (mode) {
       case 'date':
-        return <SelectDate />
+        return <SelectDate now={now} setNow={setNow} />
       case 'month':
         return <SelectMonth now={now} setNow={setNow} setMode={setMode} />
       case 'year':
