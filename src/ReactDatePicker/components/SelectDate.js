@@ -2,24 +2,25 @@ import {
   set,
   sub,
   getDay,
+  getDate,
   getMonth,
   startOfMonth,
   getDaysInMonth,
 } from 'date-fns'
 
-const SelectDate = ({ now, setNow }) => {
+const SelectDate = ({ selected, setSelected }) => {
   const currentMonth = []
   const lastMonth = []
   const nextMonth = []
 
   // fill the dates of current month
-  for (let i = 1; i <= getDaysInMonth(now); i++) {
+  for (let i = 1; i <= getDaysInMonth(selected); i++) {
     currentMonth.push(i)
   }
 
   // fill the empty cell before current month (dates of the last month)
-  const firstDayOfMonth = getDay(startOfMonth(now))
-  const datesLastMonth = getDaysInMonth(sub(now, { months: 1 }))
+  const firstDayOfMonth = getDay(startOfMonth(selected))
+  const datesLastMonth = getDaysInMonth(sub(selected, { months: 1 }))
   for (let i = 0; i < firstDayOfMonth; i++) {
     lastMonth.push(datesLastMonth - firstDayOfMonth + 1 + i)
   }
@@ -32,8 +33,8 @@ const SelectDate = ({ now, setNow }) => {
   }
 
   const handleClick = (values) => {
-    const newNow = set(now, values)
-    setNow(newNow)
+    const newNow = set(selected, values)
+    setSelected(newNow)
   }
 
   return (
@@ -46,7 +47,7 @@ const SelectDate = ({ now, setNow }) => {
       {lastMonth.map((date) => (
         <button
           key={date}
-          onClick={() => handleClick({ month: getMonth(now) - 1, date })}
+          onClick={() => handleClick({ month: getMonth(selected) - 1, date })}
         >
           {date}
         </button>
@@ -54,7 +55,7 @@ const SelectDate = ({ now, setNow }) => {
       {currentMonth.map((date) => (
         <button
           key={date}
-          style={{ color: 'blue' }}
+          style={{ color: getDate(selected) === date ? 'red' : 'blue' }}
           onClick={() => handleClick({ date })}
         >
           {date}
@@ -63,7 +64,7 @@ const SelectDate = ({ now, setNow }) => {
       {nextMonth.map((date) => (
         <button
           key={date}
-          onClick={() => handleClick({ month: getMonth(now) + 1, date })}
+          onClick={() => handleClick({ month: getMonth(selected) + 1, date })}
         >
           {date}
         </button>

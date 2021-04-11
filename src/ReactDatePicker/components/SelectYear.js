@@ -1,18 +1,18 @@
 import { setYear } from 'date-fns'
 import { getDecadeInterval } from '../utils/helper'
 
-const SelectYear = ({ now, setNow, setMode }) => {
+const SelectYear = ({ selected, setSelected, setMode }) => {
   const years = []
 
   // update options of year
-  const [start, end] = getDecadeInterval(now)
+  const [start, end] = getDecadeInterval(selected)
   for (let i = start - 1; i <= end + 1; i++) {
     years.push(i)
   }
 
   const handleClick = (year) => {
     setMode('month')
-    setNow(setYear(now, year))
+    setSelected(setYear(selected, year))
   }
 
   return (

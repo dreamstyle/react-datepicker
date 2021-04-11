@@ -1,15 +1,15 @@
 import { format, add, sub } from 'date-fns'
 import { getDecadeInterval } from '../utils/helper'
 
-const Header = ({ now, setNow, mode, setMode }) => {
+const Header = ({ selected, setSelected, mode, setMode }) => {
   const displayMode = () => {
     switch (mode) {
       case 'date':
-        return format(now, 'MMM, yyyy')
+        return format(selected, 'MMM, yyyy')
       case 'month':
-        return format(now, 'yyyy')
+        return format(selected, 'yyyy')
       case 'year':
-        const [start, end] = getDecadeInterval(now)
+        const [start, end] = getDecadeInterval(selected)
         return `${start}-${end}`
       default:
         break
@@ -19,13 +19,13 @@ const Header = ({ now, setNow, mode, setMode }) => {
   const handleClickSubtract = () => {
     switch (mode) {
       case 'date':
-        setNow(sub(now, { months: 1 }))
+        setSelected(sub(selected, { months: 1 }))
         break
       case 'month':
-        setNow(sub(now, { years: 1 }))
+        setSelected(sub(selected, { years: 1 }))
         break
       case 'year':
-        setNow(sub(now, { years: 10 }))
+        setSelected(sub(selected, { years: 10 }))
         break
       default:
         break
@@ -35,13 +35,13 @@ const Header = ({ now, setNow, mode, setMode }) => {
   const handleClickAdd = () => {
     switch (mode) {
       case 'date':
-        setNow(add(now, { months: 1 }))
+        setSelected(add(selected, { months: 1 }))
         break
       case 'month':
-        setNow(add(now, { years: 1 }))
+        setSelected(add(selected, { years: 1 }))
         break
       case 'year':
-        setNow(add(now, { years: 10 }))
+        setSelected(add(selected, { years: 10 }))
         break
       default:
         break

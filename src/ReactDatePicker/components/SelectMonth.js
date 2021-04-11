@@ -1,6 +1,6 @@
 import { setMonth } from 'date-fns'
 
-const SelectMonth = ({ now, setNow, setMode }) => {
+const SelectMonth = ({ selected, setSelected, setMode }) => {
   const months = [
     'Jan',
     'Feb',
@@ -18,7 +18,7 @@ const SelectMonth = ({ now, setNow, setMode }) => {
 
   const handleClick = (month) => {
     setMode('date')
-    setNow(setMonth(now, month))
+    setSelected(setMonth(selected, month))
   }
 
   return (

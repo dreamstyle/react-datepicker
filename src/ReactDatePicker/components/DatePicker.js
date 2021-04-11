@@ -5,18 +5,29 @@ import SelectDate from './SelectDate'
 import SelectMonth from './SelectMonth'
 import SelectYear from './SelectYear'
 
-const DatePicker = (props) => {
-  const [now, setNow] = useState(Date.now())
+const DatePicker = ({ selected, setSelected }) => {
   const [mode, setMode] = useState('date')
 
   const renderView = (mode) => {
     switch (mode) {
       case 'date':
-        return <SelectDate now={now} setNow={setNow} />
+        return <SelectDate selected={selected} setSelected={setSelected} />
       case 'month':
-        return <SelectMonth now={now} setNow={setNow} setMode={setMode} />
+        return (
+          <SelectMonth
+            selected={selected}
+            setSelected={setSelected}
+            setMode={setMode}
+          />
+        )
       case 'year':
-        return <SelectYear now={now} setNow={setNow} setMode={setMode} />
+        return (
+          <SelectYear
+            selected={selected}
+            setSelected={setSelected}
+            setMode={setMode}
+          />
+        )
       default:
         break
     }
@@ -24,7 +35,12 @@ const DatePicker = (props) => {
 
   return (
     <section>
-      <Header now={now} setNow={setNow} mode={mode} setMode={setMode} />
+      <Header
+        selected={selected}
+        setSelected={setSelected}
+        mode={mode}
+        setMode={setMode}
+      />
       <Days />
       {renderView(mode)}
     </section>
