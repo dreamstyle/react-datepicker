@@ -17,6 +17,10 @@ const Section = styled.section`
   .btn-primary {
     color: #000;
   }
+
+  .btn-today {
+    color: #db3d44;
+  }
 `
 
 export default Section
