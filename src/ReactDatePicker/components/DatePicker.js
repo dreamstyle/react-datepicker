@@ -4,7 +4,7 @@ import Days from './Days'
 import SelectDate from './SelectDate'
 import SelectMonth from './SelectMonth'
 import SelectYear from './SelectYear'
-import Section from './DatePickerStyle'
+import Section from './styles/DatePickerStyle'
 
 const DatePicker = ({ selected, setSelected, show, setShow }) => {
   const [mode, setMode] = useState('date')

@@ -5,7 +5,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons'
-import StyledHeader from './HeaderStyle'
+import StyledHeader from './styles/HeaderStyle'
 
 const CalenderHeader = ({ selected, setSelected, mode, setMode }) => {
   const displayMode = () => {

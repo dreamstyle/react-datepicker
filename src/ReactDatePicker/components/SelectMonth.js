@@ -1,5 +1,5 @@
 import { getMonth, setMonth } from 'date-fns'
-import Section from './SelectCommonStyle'
+import Section from './styles/SelectCommonStyle'
 
 const SelectMonth = ({ selected, setSelected, setMode }) => {
   const months = [

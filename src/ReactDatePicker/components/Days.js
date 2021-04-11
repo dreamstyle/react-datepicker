@@ -1,4 +1,4 @@
-import Section from './DaysStyle'
+import Section from './styles/DaysStyle'
 
 const Days = () => {
   const days = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']

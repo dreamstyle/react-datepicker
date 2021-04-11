@@ -8,7 +8,7 @@ import {
   getDaysInMonth,
   format,
 } from 'date-fns'
-import Section from './SelectDateStyle'
+import Section from './styles/SelectDateStyle'
 
 const SelectDate = ({ selected, setSelected, setShow }) => {
   const today = Date.now()
