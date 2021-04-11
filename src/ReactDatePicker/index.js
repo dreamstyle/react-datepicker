@@ -7,8 +7,8 @@ const ReactDatePicker = (props) => {
 
   return (
     <section>
-      <DatePicker />
       <DateInput selected={selected} setSelected={setSelected} />
+      <DatePicker selected={selected} setSelected={setSelected} />
     </section>
   )
 }
