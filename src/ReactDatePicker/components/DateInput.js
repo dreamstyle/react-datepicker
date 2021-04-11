@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 import { format, set } from 'date-fns'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import Section from './DateInputStyle'
 import { isValidDateFormat } from '../utils/helper'
 
 const DateInput = ({ selected, setSelected, setShow }) => {
@@ -32,12 +35,16 @@ const DateInput = ({ selected, setSelected, setShow }) => {
   }
 
   return (
-    <input
-      type="text"
-      value={date}
-      onChange={(e) => handleChange(e)}
-      onClick={() => handleClick()}
-    />
+    <Section>
+      <FontAwesomeIcon icon={faCalendarAlt} className="icon" />
+      <input
+        type="text"
+        value={date}
+        className="input"
+        onChange={(e) => handleChange(e)}
+        onClick={() => handleClick()}
+      />
+    </Section>
   )
 }
 
