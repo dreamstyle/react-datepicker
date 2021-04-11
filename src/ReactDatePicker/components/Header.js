@@ -1,7 +1,13 @@
 import { format, add, sub } from 'date-fns'
 import { getDecadeInterval } from '../utils/helper'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faChevronLeft,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons'
+import StyledHeader from './HeaderStyle'
 
-const Header = ({ selected, setSelected, mode, setMode }) => {
+const CalenderHeader = ({ selected, setSelected, mode, setMode }) => {
   const displayMode = () => {
     switch (mode) {
       case 'date':
@@ -54,12 +60,19 @@ const Header = ({ selected, setSelected, mode, setMode }) => {
   }
 
   return (
-    <header>
-      <button onClick={() => handleClickSubtract()}>{'<'}</button>
-      <button onClick={() => handleClickMode()}> {displayMode(mode)} </button>
-      <button onClick={() => handleClickAdd()}>{'>'}</button>
-    </header>
+    <StyledHeader>
+      <button onClick={() => handleClickSubtract()}>
+        <FontAwesomeIcon icon={faChevronLeft} />
+      </button>
+      <button className="current-date" onClick={() => handleClickMode()}>
+        {' '}
+        {displayMode(mode)}{' '}
+      </button>
+      <button onClick={() => handleClickAdd()}>
+        <FontAwesomeIcon icon={faChevronRight} />
+      </button>
+    </StyledHeader>
   )
 }
 
-export default Header
+export default CalenderHeader

@@ -7,8 +7,9 @@ import {
   startOfMonth,
   getDaysInMonth,
 } from 'date-fns'
+import Section from './SelectDateStyle'
 
-const SelectDate = ({ selected, setSelected }) => {
+const SelectDate = ({ selected, setSelected, setShow }) => {
   const currentMonth = []
   const lastMonth = []
   const nextMonth = []
@@ -35,41 +36,46 @@ const SelectDate = ({ selected, setSelected }) => {
   const handleClick = (values) => {
     const newNow = set(selected, values)
     setSelected(newNow)
+    setShow(false)
+  }
+
+  const isSelected = (date) => {
+    return getDate(selected) === date
   }
 
   return (
-    <section>
-      <p>
-        [debug] total days:
-        {lastMonth.length + currentMonth.length + nextMonth.length}
-      </p>
-
+    <Section>
       {lastMonth.map((date) => (
-        <button
-          key={date}
-          onClick={() => handleClick({ month: getMonth(selected) - 1, date })}
-        >
-          {date}
-        </button>
+        <div className="cell" key={date}>
+          <button
+            className="btn"
+            onClick={() => handleClick({ month: getMonth(selected) - 1, date })}
+          >
+            {date}
+          </button>
+        </div>
       ))}
       {currentMonth.map((date) => (
-        <button
-          key={date}
-          style={{ color: getDate(selected) === date ? 'red' : 'blue' }}
-          onClick={() => handleClick({ date })}
-        >
-          {date}
-        </button>
+        <div className="cell" key={date}>
+          <button
+            className={`btn btn-primary ${isSelected(date) && 'btn-active'}`}
+            onClick={() => handleClick({ date })}
+          >
+            {date}
+          </button>
+        </div>
       ))}
       {nextMonth.map((date) => (
-        <button
-          key={date}
-          onClick={() => handleClick({ month: getMonth(selected) + 1, date })}
-        >
-          {date}
-        </button>
+        <div className="cell" key={date}>
+          <button
+            className="btn"
+            onClick={() => handleClick({ month: getMonth(selected) + 1, date })}
+          >
+            {date}
+          </button>
+        </div>
       ))}
-    </section>
+    </Section>
   )
 }
 

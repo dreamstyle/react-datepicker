@@ -1,5 +1,6 @@
-import { setYear } from 'date-fns'
+import { getYear, setYear } from 'date-fns'
 import { getDecadeInterval } from '../utils/helper'
+import Section from './SelectCommonStyle'
 
 const SelectYear = ({ selected, setSelected, setMode }) => {
   const years = []
@@ -15,14 +16,27 @@ const SelectYear = ({ selected, setSelected, setMode }) => {
     setSelected(setYear(selected, year))
   }
 
+  const isPrimary = (i) => {
+    return i !== 0 && i !== 11 ? 'btn-primary' : ''
+  }
+
+  const isActive = (year) => {
+    return getYear(selected) === year ? 'btn-active' : ''
+  }
+
   return (
-    <section>
-      {years.map((year) => (
-        <button key={year} onClick={() => handleClick(year)}>
-          {year}
-        </button>
+    <Section>
+      {years.map((year, i) => (
+        <div className="cell" key={year}>
+          <button
+            className={`btn ${isPrimary(i)} ${isActive(year)}`}
+            onClick={() => handleClick(year)}
+          >
+            {year}
+          </button>
+        </div>
       ))}
-    </section>
+    </Section>
   )
 }
 
