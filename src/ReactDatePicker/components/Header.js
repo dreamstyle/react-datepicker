@@ -11,7 +11,7 @@ const CalenderHeader = ({ selected, setSelected, mode, setMode }) => {
   const displayMode = () => {
     switch (mode) {
       case 'date':
-        return format(selected, 'MMM, yyyy')
+        return format(selected, 'MMM yyyy')
       case 'month':
         return format(selected, 'yyyy')
       case 'year':
