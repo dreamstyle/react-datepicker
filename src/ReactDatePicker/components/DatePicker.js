@@ -6,7 +6,7 @@ import SelectMonth from './SelectMonth'
 import SelectYear from './SelectYear'
 import Section from './DatePickerStyle'
 
-const DatePicker = ({ selected, setSelected }) => {
+const DatePicker = ({ selected, setSelected, show, setShow }) => {
   const [mode, setMode] = useState('date')
 
   const renderView = (mode) => {
@@ -15,7 +15,11 @@ const DatePicker = ({ selected, setSelected }) => {
         return (
           <Fragment>
             <Days />
-            <SelectDate selected={selected} setSelected={setSelected} />
+            <SelectDate
+              selected={selected}
+              setSelected={setSelected}
+              setShow={setShow}
+            />
           </Fragment>
         )
       case 'month':
@@ -38,6 +42,8 @@ const DatePicker = ({ selected, setSelected }) => {
         break
     }
   }
+
+  if (!show) return null
 
   return (
     <Section>

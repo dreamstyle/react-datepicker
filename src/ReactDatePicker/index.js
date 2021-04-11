@@ -5,11 +5,21 @@ import DatePicker from './components/DatePicker'
 
 const ReactDatePicker = (props) => {
   const [selected, setSelected] = useState(Date.now())
+  const [show, setShow] = useState(false)
 
   return (
     <Section>
-      <DateInput selected={selected} setSelected={setSelected} />
-      <DatePicker selected={selected} setSelected={setSelected} />
+      <DateInput
+        selected={selected}
+        setSelected={setSelected}
+        setShow={setShow}
+      />
+      <DatePicker
+        selected={selected}
+        setSelected={setSelected}
+        show={show}
+        setShow={setShow}
+      />
     </Section>
   )
 }

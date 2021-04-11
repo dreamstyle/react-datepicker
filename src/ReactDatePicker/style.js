@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const Section = styled.section`
+  position: relative;
   width: 250px;
   font-size: 13px;
 

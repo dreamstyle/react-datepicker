@@ -2,12 +2,16 @@ import { useState, useEffect } from 'react'
 import { format, set } from 'date-fns'
 import { isValidDateFormat } from '../utils/helper'
 
-const DateInput = ({ selected, setSelected }) => {
+const DateInput = ({ selected, setSelected, setShow }) => {
   const [date, setDate] = useState(format(selected, 'yyyy-M-d'))
 
   useEffect(() => {
     setDate(format(selected, 'yyyy-M-d'))
   }, [selected])
+
+  const handleClick = () => {
+    setShow(true)
+  }
 
   const handleChange = (e) => {
     const val = e.target.value
@@ -27,7 +31,14 @@ const DateInput = ({ selected, setSelected }) => {
     )
   }
 
-  return <input type="text" value={date} onChange={(e) => handleChange(e)} />
+  return (
+    <input
+      type="text"
+      value={date}
+      onChange={(e) => handleChange(e)}
+      onClick={() => handleClick()}
+    />
+  )
 }
 
 export default DateInput

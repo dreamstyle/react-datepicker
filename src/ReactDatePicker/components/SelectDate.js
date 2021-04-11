@@ -9,7 +9,7 @@ import {
 } from 'date-fns'
 import Section from './SelectDateStyle'
 
-const SelectDate = ({ selected, setSelected }) => {
+const SelectDate = ({ selected, setSelected, setShow }) => {
   const currentMonth = []
   const lastMonth = []
   const nextMonth = []
@@ -36,6 +36,7 @@ const SelectDate = ({ selected, setSelected }) => {
   const handleClick = (values) => {
     const newNow = set(selected, values)
     setSelected(newNow)
+    setShow(false)
   }
 
   const isSelected = (date) => {
