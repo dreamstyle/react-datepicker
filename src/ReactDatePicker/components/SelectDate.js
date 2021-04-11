@@ -6,10 +6,12 @@ import {
   getMonth,
   startOfMonth,
   getDaysInMonth,
+  format,
 } from 'date-fns'
-import Section from './SelectDateStyle'
+import Section from './styles/SelectDateStyle'
 
 const SelectDate = ({ selected, setSelected, setShow }) => {
+  const today = Date.now()
   const currentMonth = []
   const lastMonth = []
   const nextMonth = []
@@ -39,6 +41,14 @@ const SelectDate = ({ selected, setSelected, setShow }) => {
     setShow(false)
   }
 
+  const isToday = (date) => {
+    const isoToday = format(today, 'yyyy-MM')
+    const isoSelected = format(selected, 'yyyy-MM')
+    return isoToday === isoSelected && getDate(today) === date
+      ? 'btn-today'
+      : null
+  }
+
   const isSelected = (date) => {
     return getDate(selected) === date
   }
@@ -58,7 +68,9 @@ const SelectDate = ({ selected, setSelected, setShow }) => {
       {currentMonth.map((date) => (
         <div className="cell" key={date}>
           <button
-            className={`btn btn-primary ${isSelected(date) && 'btn-active'}`}
+            className={`btn btn-primary ${isToday(date)} ${
+              isSelected(date) && 'btn-active'
+            }`}
             onClick={() => handleClick({ date })}
           >
             {date}

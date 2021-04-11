@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { format, set } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
-import Section from './DateInputStyle'
+import Section from './styles/DateInputStyle'
 import { isValidDateFormat } from '../utils/helper'
 
 const DateInput = ({ selected, setSelected, setShow }) => {

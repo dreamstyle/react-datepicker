@@ -3,8 +3,8 @@ import Section from './style'
 import DateInput from './components/DateInput'
 import DatePicker from './components/DatePicker'
 
-const ReactDatePicker = (props) => {
-  const [selected, setSelected] = useState(Date.now())
+const ReactDatePicker = ({ date }) => {
+  const [selected, setSelected] = useState(date ? new Date(date) : Date.now())
   const [show, setShow] = useState(false)
 
   return (

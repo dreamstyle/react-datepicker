@@ -1,6 +1,6 @@
 import { getYear, setYear } from 'date-fns'
 import { getDecadeInterval } from '../utils/helper'
-import Section from './SelectCommonStyle'
+import Section from './styles/SelectCommonStyle'
 
 const SelectYear = ({ selected, setSelected, setMode }) => {
   const years = []
